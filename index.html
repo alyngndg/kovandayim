@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sana Bir Sorum Var 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #F0FFF0; /* Honeydew */
+      color: #C54B8C; /* Mulberry */
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 400;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+    }
+    .step {
+      display: none;
+      width: 100%;
+      animation: fadeIn 0.5s ease;
+    }
+    .step.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    p, h1, h2 {
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .text-main {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .click-btn {
+      background: transparent;
+      border: 1.5px solid #C54B8C;
+      color: #C54B8C;
+      padding: 0.6rem 2rem;
+      font-size: 1.1rem;
+      font-family: 'Quicksand', sans-serif;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .click-btn:hover {
+      background-color: #C54B8C;
+      color: #F0FFF0;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .yes-btn, .no-btn {
+      font-family: 'Quicksand', sans-serif;
+      padding: 0.6rem 1.8rem;
+      font-size: 1.1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1.5px solid #C54B8C;
+    }
+    .yes-btn {
+      background-color: #C54B8C;
+      color: #F0FFF0;
+    }
+    .no-btn {
+      background-color: transparent;
+      color: #C54B8C;
+    }
+    .sub-link {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #C54B8C;
+      text-decoration: underline;
+      cursor: pointer;
+      opacity: 0.9;
+    }
+    .big-text {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+    .sub-text {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+    .signature {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #C54B8C;
+      margin-top: 2rem;
+      letter-spacing: 1px;
+    }
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      animation: floatUp 2s linear forwards;
+      font-size: 1.8rem;
+      z-index: 100;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-120px) scale(1.3); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Adım 1 -->
+    <div id="step1" class="step active">
+      <p class="text-main">aşkkuşumm seni çok seviyorum bu şekilde teklif etmek istedim</p>
+      <button class="click-btn" onclick="nextStep(2)">tıkla</button>
+    </div>
+
+    <!-- Adım 2 -->
+    <div id="step2" class="step">
+      <p class="text-main">ben kasım 18 den sonra müsait oluyorm sizin mtler ne zaman başlıyo bilmiyorum ama müsaitsen 18 inden sonra buluşalım mııııı</p>
+      <button class="click-btn" onclick="nextStep(3)">tıkla</button>
+    </div>
+
+    <!-- Adım 3: Karar Ekranı -->
+    <div id="step3" class="step">
+      <p class="text-main">ne dersinn 🥹 (evet basıcaksan hayır da bas çok eğlenceli yaptım gormen lazım😭)</p>
+      <div class="btn-group">
+        <button id="yesBtn" class="yes-btn" onclick="handleDirectYes()">evet</button>
+        <button id="noBtn" class="no-btn" onclick="handleNoClick()">hayır</button>
+      </div>
+    </div>
+
+    <!-- Adım 4: Doğrudan Evet'e Basınca -->
+    <div id="step4" class="step">
+      <h1 class="big-text">YAŞASIN SENİ YERUMMM</h1>
+      <a class="sub-link" onclick="goToDecisionFromYes()">hayır seçeneği için buraya tıkla😜</a>
+    </div>
+
+    <!-- Adım 5: Hayır Büyütme Oyunu Sonrası veya İlerleyiş -->
+    <div id="step5" class="step">
+      <h1 class="big-text" id="finalTitle">TYYYYYYY</h1>
+      <p class="sub-text">evet dediysen bana iletir misin cevabını göremiyrm daha o kadar iyi yazamıyorum kod<br><br>seni çok sevdiğimi sakın unutma</p>
+    </div>
+  </div>
+
+  <div class="signature">-Aley</div>
+
+  <script>
+    const noTexts = ["ne", "niye agliyom", "evet de", "evet"];
+    let noClickCount = 0;
+
+    function nextStep(stepNumber) {
+      document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.getElementById('step' + stepNumber).classList.add('active');
+    }
+
+    function createSparkles() {
+      const emojis = ['✨', '💗', '💖', '✨', '💕'];
+      for (let i = 0; i < 25; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+          sparkle.style.left = Math.random() * 90 + 5 + 'vw';
+          sparkle.style.top = Math.random() * 60 + 20 + 'vh';
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 2000);
+        }, i * 80);
+      }
+    }
+
+    function handleDirectYes() {
+      createSparkles();
+      nextStep(4);
+    }
+
+    function goToDecisionFromYes() {
+      // Hayır butonunu ilk haline sıfırla
+      noClickCount = 0;
+      const noBtn = document.getElementById('noBtn');
+      noBtn.innerText = "hayır";
+      noBtn.style.transform = "scale(1)";
+      noBtn.style.padding = "0.6rem 1.8rem";
+      noBtn.style.fontSize = "1.1rem";
+      nextStep(3);
+    }
+
+    function handleNoClick() {
+      const noBtn = document.getElementById('noBtn');
+      
+      if (noClickCount < noTexts.length) {
+        noBtn.innerText = noTexts[noClickCount];
+        noClickCount++;
+        
+        // Butonu aşamalı olarak büyüt
+        const newScale = 1 + (noClickCount * 0.4);
+        noBtn.style.transform = `scale(${newScale})`;
+        
+        if (noClickCount === noTexts.length) {
+          // Son "evet" durumuna geldiğinde stillerini değiştir
+          noBtn.style.backgroundColor = "#C54B8C";
+          noBtn.style.color = "#F0FFF0";
+        }
+      } else {
+        // "Hayır" döngüsü tamamlandıktan sonra basıldığında
+        createSparkles();
+        document.getElementById('finalTitle').innerText = "BİLİYODUMMM (müsait değilsen söyle btw bıtıvı bu arada)";
+        nextStep(5);
+      }
+    }
+  </script>
+</body>
+</html>
+
